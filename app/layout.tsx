@@ -23,7 +23,7 @@ const Nav = () => (
         <Link className="navbtn" href="/kontakt">KONTAKT</Link>
       </nav>
       <div className="flex items-center gap-2">
-        <a href="https://wa.me/48666290386" target="_blank" className="hidden md:inline px-4 py-2 rounded-xl font-semibold gradient-gold text-black">WhatsApp</a>
+        <a href="https://wa.me/48666290386" target="_blank" className="hidden md:inline px-4 py-2 rounded-xl font-semibold gradient-gold text-black">CZAT</a>
       </div>
     </div>
   </header>
