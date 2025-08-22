@@ -1,7 +1,7 @@
-
 'use client';
 import Intro from '../components/Intro';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 const fakeClients = ['NEXON','AURUM','SKYPIX','ALPHADOT','NOVA','VANTUM'];
 
@@ -9,7 +9,9 @@ export default function Page(){
   return (
     <div className="relative">
       <Intro />
+
       <div className="grid md:grid-cols-2 gap-8 items-center">
+        {/* LEWA — tekst */}
         <div>
           <div className="uppercase tracking-[.35em] text-sm text-[#b9a15a] mb-4">Technologia • Drony • Moto</div>
           <h1 className="text-4xl md:text-6xl font-extrabold leading-[1.05] mb-6">
@@ -25,6 +27,7 @@ export default function Page(){
             <Link href="/kontakt" className="px-5 py-3 rounded-xl font-semibold gradient-gold text-black">Napisz do nas</Link>
             <Link href="/projekty" className="px-5 py-3 rounded-xl font-semibold border border-[#2a2a2a] hover:border-[#3a3a3a]">Wyceń swój pomysł</Link>
           </div>
+
           <div className="mt-10 text-sm text-[#9f9f9f]">Zaufali (przykładowo):</div>
           <div className="mt-4 grid grid-cols-3 md:grid-cols-6 gap-3 opacity-80">
             {fakeClients.map(c => (
@@ -34,24 +37,42 @@ export default function Page(){
             ))}
           </div>
         </div>
+
+        {/* PRAWA — karta z logo */}
         <div className="relative h-[360px] md:h-[520px]">
           <div className="absolute inset-0 rounded-3xl border border-[#1f1f1f] bg-[#121212] overflow-hidden flex items-center justify-center">
-            <div className="text-center">
-              <img src="/logo.svg" alt="GUT GROUP" className="w-32 h-32 mx-auto mb-3 opacity-90"/>
+            {/* złota poświata w tle, żeby logo nie „ginęło” */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{ background:
+                'radial-gradient(420px 180px at 50% 45%, rgba(212,175,55,0.10), transparent), radial-gradient(360px 220px at 60% 60%, rgba(255,204,102,0.06), transparent)'
+              }}
+            />
+            <div className="text-center px-6">
+              <motion.img
+                src="/logo.png"
+                alt="GUT GROUP"
+                className="mx-auto mb-4"
+                style={{ width: 140, height: 140, objectFit: 'contain' }}
+                initial={{ y: 6, opacity: 0.9 }}
+                animate={{ y: [6, -6, 6], opacity: 1 }}
+                transition={{ duration: 4, repeat: Infinity }}
+              />
               <h2 className="text-2xl font-bold gold-text">GUT GROUP</h2>
             </div>
           </div>
         </div>
       </div>
 
+      {/* PROJEKTY */}
       <div className="mt-16">
         <h2 className="text-2xl md:text-4xl font-bold mb-6">Nasze projekty</h2>
         <div className="grid md:grid-cols-2 gap-6">
           {[
             {k:'gutcode', name:'GUTCODE.PL', tag:'Aplikacje mobilne i strony internetowe.', href:'/projekty'},
-            {k:'latamy', name:'LATAMYWYSOKO.PL', tag:'Usługi dronem w całej Polsce.', href:'/projekty'},
-            {k:'moto', name:'GUT MOTO Community', tag:'Społeczność, zloty, akcesoria.', href:'/projekty'},
-            {k:'detail', name:'GUT Detailing', tag:'Detailing / ochrona lakieru (wkrótce)', href:'/projekty'}
+            {k:'latamy',  name:'LATAMYWYSOKO.PL', tag:'Usługi dronem w całej Polsce.', href:'/projekty'},
+            {k:'moto',    name:'GEAR UP', tag:'Społeczność, zloty, akcesoria.', href:'/projekty'},
+            {k:'detail',  name:'GUT GARAGE', tag:'Detailing / ochrona lakieru (wkrótce)', href:'/projekty'}
           ].map(p => (
             <div key={p.k} className="card hover:-translate-y-1 transition-transform">
               <div className="flex items-start justify-between">
@@ -62,7 +83,7 @@ export default function Page(){
                 </div>
               </div>
               <div className="mt-4 flex gap-3">
-                <a href={p.href} className="text-sm px-4 py-2 rounded-lg border border-[#2a2a2a]">Szczegóły</a>
+                <Link href={p.href} className="text-sm px-4 py-2 rounded-lg border border-[#2a2a2a]">Szczegóły</Link>
               </div>
             </div>
           ))}
