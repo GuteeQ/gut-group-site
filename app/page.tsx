@@ -3,7 +3,7 @@ import Intro from '../components/Intro';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
-const fakeClients = ['GUTCODE.PL', 'BRAK'];
+const fakeClients = ['GUTCODE', 'BRAK'];
 
 export default function Page() {
   return (
