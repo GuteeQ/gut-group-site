@@ -11,7 +11,7 @@ export default function Page(){
 
   return (
     <div>
-      <h2 className="text-2xl md:text-4xl font-bold mb-2">SKONTAKTUJ SIĘ Z NAMI/h2>
+      <h2 className="text-2xl md:text-4xl font-bold mb-2">SKONTAKTUJ SIĘ Z NAMI</h2>
       <p className="mb-6 text-[#bdbdbd]">Jesteśmy dostępni od poniedziałku do piątku, 9:00 – 22:00</p>
       <div className="grid md:grid-cols-2 gap-6 items-start">
         <div className="card">
