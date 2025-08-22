@@ -3,7 +3,7 @@ import './globals.css';
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'GUT GROUP — Tech • Drones • Automotive',
+  title: 'GUT GROUP — CODE • FLY • DRIVE',
   description: 'Nowoczesna firma łącząca świat technologii, dronów i motoryzacji.',
 };
 
@@ -16,11 +16,11 @@ const Nav = () => (
         </Link>
       </div>
       <nav className="hidden md:flex items-center gap-2">
-        <Link className="navbtn" href="/">Strona główna</Link>
-        <Link className="navbtn" href="/projekty">Projekty</Link>
-        <Link className="navbtn" href="/onas">O nas</Link>
-        <Link className="navbtn" href="/kontakt">Kontakt</Link>
-        <Link className="navbtn" href="/sklep">Sklep</Link>
+        <Link className="navbtn" href="/">STRONA GŁÓWNA</Link>
+        <Link className="navbtn" href="/projekty">PROJEKTY</Link>
+        <Link className="navbtn" href="/onas">O NAS</Link>
+        <Link className="navbtn" href="/sklep">SKLEP</Link>
+        <Link className="navbtn" href="/kontakt">KONTAKT</Link>
       </nav>
       <div className="flex items-center gap-2">
         <a href="https://wa.me/48666290386" target="_blank" className="hidden md:inline px-4 py-2 rounded-xl font-semibold gradient-gold text-black">WhatsApp</a>
@@ -34,18 +34,18 @@ const Footer = () => (
     <div className="max-w-7xl mx-auto px-5 grid md:grid-cols-3 gap-6">
       <div>
         <div className="gold-text mb-2">GUT GROUP</div>
-        <div>GUT GROUP Sp. z o.o.</div>
-        <div>ul. Przykładowa 1</div>
-        <div>00-000 Warszawa</div>
+        <div>GUT GROUP</div>
+        <div>ul. Włodarzewska 57C/4</div>
+        <div>02-384 Warszawa</div>
       </div>
       <div>
         <div className="mb-2">Nawigacja</div>
         <div className="flex gap-3 flex-wrap">
-          <Link href="/" className="underline-offset-4 hover:underline">Strona główna</Link>
-          <Link href="/projekty" className="underline-offset-4 hover:underline">Projekty</Link>
-          <Link href="/onas" className="underline-offset-4 hover:underline">O nas</Link>
-          <Link href="/kontakt" className="underline-offset-4 hover:underline">Kontakt</Link>
-          <Link href="/sklep" className="underline-offset-4 hover:underline">Sklep</Link>
+          <Link href="/" className="underline-offset-4 hover:underline">STRONA GŁÓWNA</Link>
+          <Link href="/projekty" className="underline-offset-4 hover:underline">PROJEKTY</Link>
+          <Link href="/onas" className="underline-offset-4 hover:underline">O NAS</Link>
+          <Link href="/sklep" className="underline-offset-4 hover:underline">SKLEP</Link>
+          <Link href="/kontakt" className="underline-offset-4 hover:underline">KONTAKT</Link>
         </div>
       </div>
       <div>
