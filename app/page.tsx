@@ -72,7 +72,7 @@ export default function Page() {
           {[
             { k: 'gutcode', name: 'GUTCODE.PL', tag: 'Aplikacje mobilne i strony internetowe.', href: '/projekty' },
             { k: 'latamy',  name: 'LATAMYWYSOKO.PL', tag: 'Usługi dronem w całej Polsce.', href: '/projekty' },
-            { k: 'moto',    name: 'GEAR UP', tag: 'Społeczność, zloty, akcesoria.', href: '/projekty' },
+            { k: 'moto',    name: 'GEAR UP', tag: 'Społeczność motoryzacyjna, zloty, akcesoria samochodowe.', href: '/projekty' },
             { k: 'detail',  name: 'GUT GARAGE', tag: 'Detailing / ochrona lakieru (wkrótce)', href: '/projekty' }
           ].map(p => (
             <div key={p.k} className="card hover:-translate-y-1 transition-transform">
