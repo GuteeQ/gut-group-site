@@ -35,8 +35,7 @@ const Footer = () => (
       <div>
         <div className="gold-text mb-2">GUT GROUP</div>
         <div>GUT GROUP</div>
-        <div>ul. Włodarzewska 57C/4</div>
-        <div>02-384 Warszawa</div>
+        <div>Warszawa, Poland</div>
       </div>
       <div>
         <div className="mb-2">Nawigacja</div>
