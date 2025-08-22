@@ -3,17 +3,20 @@ import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useEffect, useState, useCallback } from 'react';
 
 type Props = {
-  duration?: number;      // jak długo intro jest widoczne
-  logoSrc?: string;       // ścieżka do logo w /public
-  onFinish?: () => void;  // callback po zakończeniu
+  logoDuration?: number;   // ms – czas wjazdu logo
+  textDuration?: number;   // ms – czas wyświetlenia napisu po logo
+  logoSrc?: string;
+  onFinish?: () => void;
 };
 
 export default function Intro({
-  duration = 8000,
+  logoDuration = 5000,
+  textDuration = 5000,
   logoSrc = '/logo.png',
   onFinish,
 }: Props) {
   const [show, setShow] = useState(true);
+  const [stage, setStage] = useState<'logo' | 'text'>('logo'); // 2 etapy
   const [canSkip, setCanSkip] = useState(false);
   const prefersReduced = useReducedMotion();
 
@@ -23,12 +26,32 @@ export default function Intro({
   }, [onFinish]);
 
   useEffect(() => {
-    const s = setTimeout(() => setCanSkip(true), 1200); // po ~1.2s można pominąć
-    const t = setTimeout(finish, duration);
+    // pozwól pominąć po 1s
+    const s = setTimeout(() => setCanSkip(true), 1000);
+
+    // przejście logo -> tekst
+    const toText = setTimeout(() => setStage('text'), prefersReduced ? 200 : logoDuration);
+
+    // zakończenie po tekście
+    const end = setTimeout(
+      finish,
+      (prefersReduced ? 200 : logoDuration) + (prefersReduced ? 500 : textDuration)
+    );
+
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && canSkip && finish();
     window.addEventListener('keydown', onKey);
-    return () => { clearTimeout(s); clearTimeout(t); window.removeEventListener('keydown', onKey); };
-  }, [duration, finish, canSkip]);
+
+    return () => {
+      clearTimeout(s);
+      clearTimeout(toText);
+      clearTimeout(end);
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [logoDuration, textDuration, prefersReduced, canSkip, finish]);
+
+  const logoAnim = prefersReduced
+    ? { initial: { opacity: 0 }, animate: { opacity: 1 } }
+    : { initial: { y: 40, opacity: 0, scale: 0.96 }, animate: { y: 0, opacity: 1, scale: 1 } };
 
   return (
     <AnimatePresence>
@@ -42,7 +65,7 @@ export default function Intro({
           transition={{ duration: 0.5 }}
           aria-hidden
         >
-          {/* subtelne złote poświaty */}
+          {/* subtelna złota poświata */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
@@ -52,34 +75,39 @@ export default function Intro({
           />
 
           <div className="text-center px-6">
-            {/* LOGO — powolny wjazd + fade/scale */}
+            {/* ETAP 1: logo wjeżdża 5s */}
             <motion.img
               src={logoSrc}
               alt="GUT GROUP logo"
               className="mx-auto mb-4"
-              style={{ width: 120, height: 120, objectFit: 'contain' }}
-              initial={prefersReduced ? { opacity: 0 } : { y: 30, opacity: 0, scale: 0.96 }}
-              animate={prefersReduced ? { opacity: 1 } : { y: 0, opacity: 1, scale: 1 }}
-              transition={{ duration: prefersReduced ? 0.25 : 1.6, ease: 'easeOut' }}
+              style={{ width: 140, height: 140, objectFit: 'contain' }}
+              initial={logoAnim.initial}
+              animate={logoAnim.animate}
+              transition={{
+                duration: prefersReduced ? 0.25 : logoDuration / 1000,
+                ease: 'easeOut',
+              }}
             />
 
-            {/* napisy */}
-            <motion.h1
-              className="text-4xl md:text-6xl font-extrabold tracking-tight gold-text mb-2"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: prefersReduced ? 0.05 : 0.3 }}
-            >
-              GUT GROUP
-            </motion.h1>
-            <motion.p
-              className="text-[16px] md:text-[18px] text-[#bbbbbb]"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: prefersReduced ? 0.1 : 0.45 }}
-            >
-              Technologia • Drony • Moto — standard premium
-            </motion.p>
+            {/* ETAP 2: napis – pokazuje się dopiero po skończeniu animacji logo */}
+            <AnimatePresence>
+              {stage === 'text' && (
+                <motion.div
+                  key="caption"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight gold-text mb-2">
+                    GUT GROUP
+                  </h1>
+                  <p className="text-[16px] md:text-[18px] text-[#bbbbbb]">
+                    Technologia • Drony • Moto — standard premium
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             {/* delikatny glow pod logo */}
             <motion.div
@@ -90,7 +118,7 @@ export default function Intro({
             />
           </div>
 
-          {/* przycisk „Pomiń intro” */}
+          {/* Pomiń intro */}
           {canSkip && (
             <button
               onClick={finish}
