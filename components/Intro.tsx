@@ -104,7 +104,7 @@ export default function Intro({
                     GUT GROUP
                   </h1>
                   <p className="text-[16px] md:text-[18px] text-[#bbbbbb]">
-                    Technologia • Drony • Moto — standard premium
+                    CODE • FLY • DRIVE
                   </p>
                 </motion.div>
               )}
