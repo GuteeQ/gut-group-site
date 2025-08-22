@@ -1,7 +1,7 @@
 export default function Page() {
   return (
     <div className="flex flex-col items-center text-center">
-      <h2 className="text-2xl md:text-4xl font-bold mb-10">Kim jesteśmy</h2>
+      <h2 className="text-2xl md:text-4xl font-bold mb-10">TROCHĘ INFORMACJI O NAS</h2>
 
       {/* sekcja logo + opis */}
       <div className="grid md:grid-cols-2 gap-8 items-center w-full max-w-5xl mb-10 text-left">
