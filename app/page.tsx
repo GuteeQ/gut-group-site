@@ -3,7 +3,7 @@ import Intro from '../components/Intro';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
-const fakeClients = ['NEXON','AURUM','SKYPIX','ALPHADOT','NOVA','VANTUM'];
+const fakeClients = ['GUTCODE.PL'];
 
 export default function Page(){
   return (
@@ -28,7 +28,7 @@ export default function Page(){
             <Link href="/projekty" className="px-5 py-3 rounded-xl font-semibold border border-[#2a2a2a] hover:border-[#3a3a3a]">Wyceń swój pomysł</Link>
           </div>
 
-          <div className="mt-10 text-sm text-[#9f9f9f]">Zaufali (przykładowo):</div>
+          <div className="mt-10 text-sm text-[#9f9f9f]">Zaufali nam:</div>
           <div className="mt-4 grid grid-cols-3 md:grid-cols-6 gap-3 opacity-80">
             {fakeClients.map(c => (
               <div key={c} className="text-center px-3 py-2 rounded-lg border border-[#1f1f1f] bg-[#121212]">
