@@ -11,7 +11,7 @@ const Nav = () => (
   <header className="sticky top-0 z-50 backdrop-blur bg-black/40 border-b border-[#151515]">
     <div className="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
       <div className="flex items-center gap-3">
-        <img src="/logo.svg" alt="GUT GROUP" className="w-9 h-9 rounded-xl" />
+        <img src="/logo.png" alt="GUT GROUP" className="w-9 h-9 rounded-xl" />
         <div className="gold-text text-lg">GUT GROUP</div>
       </div>
       <nav className="hidden md:flex items-center gap-2">

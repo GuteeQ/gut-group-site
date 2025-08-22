@@ -10,7 +10,7 @@ type Props = {
 
 export default function Intro({
   duration = 15000,
-  logoSrc = '/logo.svg',
+  logoSrc = '/logo.png',
   onFinish,
 }: Props) {
   const [show, setShow] = useState(true);
