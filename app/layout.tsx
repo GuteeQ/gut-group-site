@@ -23,7 +23,7 @@ const Nav = () => (
         <Link className="navbtn" href="/kontakt">KONTAKT</Link>
       </nav>
       <div className="flex items-center gap-2">
-        <a href="https://wa.me/48666290386" target="_blank" className="hidden md:inline px-4 py-2 rounded-xl font-semibold gradient-gold text-black">CZAT</a>
+        <a href="https://wa.me/48666290386" target="_blank" className="hidden md:inline px-4 py-2 rounded-xl font-semibold gradient-gold text-black">NAPISZ DO NAS</a>
       </div>
     </div>
   </header>
@@ -67,7 +67,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Nav />
         <main className="max-w-7xl mx-auto px-5 py-10 md:py-14">{children}</main>
         <Footer />
-        <a href="https://wa.me/48666290386" target="_blank" className="fixed right-5 bottom-5 px-4 py-3 rounded-2xl font-semibold shadow-lg border border-[#2a2a2a] gradient-gold text-black">WhatsApp</a>
+        <a href="https://wa.me/48666290386" target="_blank" className="fixed right-5 bottom-5 px-4 py-3 rounded-2xl font-semibold shadow-lg border border-[#2a2a2a] gradient-gold text-black">NAPISZ DO NAS</a>
       </body>
     </html>
   );
